@@ -1,0 +1,29 @@
+<%= form_with scope: :record, url: records_path, local: true do |form| %>
+  <% if @record.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@record.errors.count, "Erro!") %>
+        Album não foi salvo:
+      </h2>
+      <ul>
+        <% @record.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+  <%= form.label :artist %><br>
+  <%= form.text_field :artist %>
+  </p>
+
+  <p>
+  <%= form.label :album %><br>
+  <%= form.text_field :album %>
+  </p>
+
+  <p>
+  <%= form.submit %>
+  </p>
+<% end %>
