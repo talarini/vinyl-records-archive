@@ -11,6 +11,10 @@ class RecordsController < ApplicationController
     @record = Record.find(params[:id])
   end
 
+  def edit
+    @record = Record.find(params[:id])
+  end
+
   def create
     @record = Record.new(record_params)
 
@@ -19,6 +23,22 @@ class RecordsController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def update
+    @record = Record.find(params[:id])
+    if @record.update(record_params)
+      redirect_to @record
+    else
+      render 'show'
+    end
+  end
+
+  def destroy
+    @record = Record.find(params[:id])
+    @record.destroy
+
+    redirect_to records_path
   end
 
   private
