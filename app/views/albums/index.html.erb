@@ -1,0 +1,19 @@
+<h1>Albums Cadastrados</h1>
+<%= link_to 'Novo Album', new_album_path %>
+
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Detalhes<th>
+  </tr>
+
+  <% @album.each do |album| %>
+    <tr>
+      <td><%= album.name %></td>
+      <td><%= album.details %></td>
+      <td><%= link_to 'Show', album_path(album) %></td>
+      <td><%= link_to 'Edit', edit_album_path(album) %></td>
+      <td><%= link_to 'Delete', album_path(album), method: :delete, data: { confirm: 'Sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
