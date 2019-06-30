@@ -12,9 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2019_06_19_211149) do
 
-  create_table "records", force: :cascade do |t|
+  create_table "bands", force: :cascade do |t|
+    t.string "name"
     t.string "artist"
-    t.string "album"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,0 +1,17 @@
+<h1>Bandas Cadastradas</h1>
+<%= link_to 'Nova Banda', new_band_path %>
+
+<table>
+  <tr>
+    <th>Nome</th>
+  </tr>
+
+  <% @band.each do |band| %>
+    <tr>
+      <td><%= band.name %></td>
+      <td><%= link_to 'Show', band_path(band) %></td>
+      <td><%= link_to 'Edit', edit_band_path(band) %></td>
+      <td><%= link_to 'Delete', band_path(band), method: :delete, data: { confirm: 'Sure?' } %></td>
+    </tr>
+  <% end %>
+</table>

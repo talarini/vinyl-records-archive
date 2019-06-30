@@ -1,0 +1,15 @@
+<p>
+<strong>Nome:</strong>
+<%= @band.name %>
+</p>
+
+<% unless @band.artist.empty? %>
+  <p>
+  <strong>Artista Participante:</strong>
+  <%= @band.artist %>
+  </p>
+<% end %>
+
+<%= link_to 'Edit', edit_band_path(@band) %>
+<%= link_to 'Delete', band_path(@band), method: :delete, data: { confirm: 'Sure?' } %>
+<%= link_to 'Back', bands_path %>
