@@ -1,20 +1,28 @@
-<h1>Albums Cadastrados</h1>
-<%= link_to 'Novo Album', new_album_path %>
+<h1><i class="fas fa-compact-disc"> Álbuns</i></h1>
 
-<table>
+<table class='table'>
   <tr>
+    <th>Capa</th>
     <th>Nome</th>
-    <th>Detalhes<th>
+    <th>Banda</th>
+    <th>Detalhes</th>
+    <th>Opções</th>
   </tr>
 
   <% @album.each do |album| %>
     <tr>
+      <td><%= image_tag(album.cover, height: "256", width: "256") if album.cover.attached? %>
       <td><%= album.name %></td>
+      <td><%= album.band.name %></td>
       <td><%= album.details %></td>
-      <td><%= link_to 'Show', album_path(album) %></td>
-      <td><%= link_to 'Edit', edit_album_path(album) %></td>
-      <td><%= link_to 'Delete', album_path(album), method: :delete, data: { confirm: 'Sure?' } %></td>
+      <td>
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <%= link_to 'Ver', album_path(album), class: "btn btn-secondary fas fa-eye" %>
+          <%= link_to 'Editar', edit_album_path(album), class: "btn btn-secondary fas fa-pen-nib" %>
+          <%= link_to 'Deletar album', album_path(album), method: :delete, data: { confirm: 'Sure?' }, class: "btn btn-danger fas fa-trash"%>
+        </div>
+      </td>
     </tr>
   <% end %>
 </table>
-<%= link_to 'Back', root_url %>
+<%= link_to 'Back', root_url, class: "btn btn-info" %>

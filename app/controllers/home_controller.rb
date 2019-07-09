@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @album = Album.all
-    @band = Band.all
+    @albums = Album.all
+    @bands = Band.all
   end
 end
