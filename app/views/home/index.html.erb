@@ -1,0 +1,36 @@
+<h1> Arquivo de Discos de Vinil </h1>
+
+<%= link_to 'Nova Banda', new_band_path %>
+<%= link_to 'Novo Album', new_album_path %>
+
+<h3> Albuns cadastrados </h3>
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Banda<th>
+  </tr>
+
+  <% @album.each do |album| %>
+    <tr>
+      <td><%= album.name %></td>
+      <td><%= album.band.name %></td>
+      <td><%= link_to 'Show', album_path(album) %></td>
+      <td><%= link_to 'Edit', edit_album_path(album) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<h3> Bandas cadastradas </h3>
+<table>
+  <tr>
+    <th>Nome</th>
+  </tr>
+
+  <% @band.each do |band| %>
+    <tr>
+      <td><%= band.name %></td>
+      <td><%= link_to 'Show', band_path(band) %></td>
+      <td><%= link_to 'Edit', edit_band_path(band) %></td>
+    </tr>
+  <% end %>
+</table>
