@@ -1,22 +1,24 @@
-<p>
-<strong>Nome:</strong>
-<%= @album.name %>
-</p>
-<p>
-<strong>Banda:</strong>
-<%= @album.band.name %>
-<br>
-<strong>Artistas participantes:</strong>
-<%= @album.band.artist %>
-</p>
-
-<% unless @album.details.empty? %>
-  <p>
-  <strong>Detalhes:</strong>
-  <%= @album.details %>
-  </p>
-<% end %>
-
-<%= link_to 'Edit', edit_album_path(@album) %>
-<%= link_to 'Delete', album_path(@album), method: :delete, data: { confirm: 'Sure?' } %>
-<%= link_to 'Back', root_url %>
+<h1><i class="fas fa-compact-disc"> Álbuns</i></h1>
+<table class='table'>
+  <tr>
+    <th>Capa</th>
+    <th>Nome</th>
+    <th>Banda</th>
+    <th>Detalhes</th>
+    <th>Opções</th>
+  </tr>
+  <tr>
+      <td><%= image_tag(@album.cover, height: "512", width: "512") if @album.cover.attached? %>
+      <td><%= @album.name %></td>
+      <td><%= @album.band.name %></td>
+      <td><%= @album.details %></td>
+      <td>
+        <div class="btn-group" role="group">
+          <%= link_to 'Ver', album_path(@album), class: "btn btn-secondary fas fa-eye" %>
+          <%= link_to 'Editar', edit_album_path(@album), class: "btn btn-secondary fas fa-pen-nib" %>
+          <%= link_to 'Deletar album', album_path(@album), method: :delete, data: { confirm: 'Sure?' }, class: "btn btn-danger fas fa-trash"%>
+        </div>
+      </td>
+    </tr>
+</table>
+<%= link_to 'Back', root_url, class: "btn btn-info" %>

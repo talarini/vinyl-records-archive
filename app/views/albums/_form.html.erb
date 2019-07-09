@@ -15,7 +15,7 @@
 
   <p>
   <%= f.label :name %><br>
-  <%= f.text_field :name %>
+  <%= f.text_field :name, required: true %>
   </p>
 
   <p>
@@ -26,11 +26,17 @@
   <p>
   <%= f.label :band_id %><br>
   <%= f.collection_select(:band_id, @bands, :id, :name, include_blank: 'Selecione') %>
+  <%= link_to "Não está na lista?", new_band_path %>
   </p>
 
- <p>
+  <p>
+  <%= f.label :cover %>
+  <%= f.file_field :cover %>
+  </p>
+
+  <p>
   <%= f.submit %>
   </p>
 <% end %>
 
-<%= link_to 'Back', albums_path %>
+<%= link_to 'Back', albums_path, class: "btn btn-info"%>

@@ -1,36 +1,23 @@
-<h1> Arquivo de Discos de Vinil </h1>
-
-<%= link_to 'Nova Banda', new_band_path %>
-<%= link_to 'Novo Album', new_album_path %>
-
-<h3> Albuns cadastrados </h3>
-<table>
+<h1><i class="fas fa-compact-disc"> Álbuns</i></h1>
+<table class='table table-sm'>
   <tr>
-    <th>Nome</th>
-    <th>Banda<th>
+    <th>Capa</th>
+    <th>Album</th>
+    <th>Banda</th>
+    <th>Opções</th>
   </tr>
 
-  <% @album.each do |album| %>
+  <% @albums.each do |album| %>
     <tr>
+      <td><%= image_tag(album.cover, height: "256", width: "256") if album.cover.attached? %>
       <td><%= album.name %></td>
       <td><%= album.band.name %></td>
-      <td><%= link_to 'Show', album_path(album) %></td>
-      <td><%= link_to 'Edit', edit_album_path(album) %></td>
-    </tr>
-  <% end %>
-</table>
-
-<h3> Bandas cadastradas </h3>
-<table>
-  <tr>
-    <th>Nome</th>
-  </tr>
-
-  <% @band.each do |band| %>
-    <tr>
-      <td><%= band.name %></td>
-      <td><%= link_to 'Show', band_path(band) %></td>
-      <td><%= link_to 'Edit', edit_band_path(band) %></td>
+      <td>
+        <div class="btn-group" role="group">
+          <%= link_to 'Ver', album_path(album), class: "btn btn-secondary fas fa-eye" %>
+          <%= link_to 'Editar', edit_album_path(album), class: "btn btn-secondary fas fa-pen-nib" %>
+        </div>
+      </td>
     </tr>
   <% end %>
 </table>
