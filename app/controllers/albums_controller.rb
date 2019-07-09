@@ -1,5 +1,6 @@
 class AlbumsController < ApplicationController
   before_action :album_get, only: %i[show edit update destroy]
+  before_action :band_get
   def index
     @album = Album.all
   end
@@ -38,10 +39,14 @@ class AlbumsController < ApplicationController
 
   private
   def album_params
-    params.require(:album).permit(:name, :artist)
+    params.require(:album).permit(:name, :details,:band_id)
   end
 
   def album_get
-   @album = Album.find(params[:id])
+    @album = Album.find(params[:id])
+  end
+
+  def band_get
+    @bands = Band.all
   end
 end

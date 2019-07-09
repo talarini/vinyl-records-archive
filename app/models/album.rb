@@ -1,4 +1,4 @@
 class Album < ApplicationRecord
   belongs_to :band
- validate :name 
+  validate :name
 end
